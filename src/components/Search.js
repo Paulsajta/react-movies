@@ -2,6 +2,7 @@ import React from 'react';
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
+
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -11,7 +12,7 @@ class Search extends React.Component {
             url: 'http://www.omdbapi.com/?apikey=280acd76'
         }
         this.api = {
-            url: `http://www.omdbapi.com/?apikey=${API_KEY}`
+            url: `http://www.omdbapi.com/?apikey=280acd76`
         }
     }
 
