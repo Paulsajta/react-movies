@@ -9,10 +9,10 @@ class Search extends React.Component {
         this.state = {
             search: props.home,
             type: '',
-            url: 'http://www.omdbapi.com/?apikey=280acd76'
+            url: 'https://www.omdbapi.com/?apikey=280acd76'
         }
         this.api = {
-            url: `http://www.omdbapi.com/?apikey=280acd76`
+            url: `https://www.omdbapi.com/?apikey=${API_KEY}`
         }
     }
 
