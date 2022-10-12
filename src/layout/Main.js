@@ -11,7 +11,7 @@ class Main extends React.Component {
         this.state = {
             movie: [],
             error: null,
-            home: 'matrix',
+            home: 'zombie',
             loading: '',
         }
     }
