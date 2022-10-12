@@ -1,18 +1,12 @@
 import React from "react";
 
-class OneCardMovie extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-    render() {
+const OneCardMovie = (props) => {
         const {
             Poster,
             Title,
             Type,
             Year,
-            imdbID,
-        } = this.props
+        } = props
         return (
                 <div className="card movie">
                     <div className="card-image waves-effect waves-block waves-light">
@@ -29,7 +23,6 @@ class OneCardMovie extends React.Component {
                     </div>
                 </div>
         )
-    }
 
 }
 

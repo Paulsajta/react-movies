@@ -1,46 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
 
-class Search extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            search: props.home,
-            type: '',
-            url: 'https://www.omdbapi.com/?apikey=280acd76'
-        }
-        this.api = {
-            url: `https://www.omdbapi.com/?apikey=${API_KEY}`
-        }
+const Search = (props) => {
+
+    const [search, setSearch] = useState(props.home)
+    const [type, setType] = useState('')
+    const web = `https://www.omdbapi.com/?apikey=${API_KEY}`
+
+    const searchInput = (event) => {
+        setSearch(event.target.value)
     }
 
-    searchInput = (event) => {
-        this.setState({search: event.target.value})
+    const searchFilter = (event) => {
+        setType(event.target.value)
+        let url = `${web}&s=${search}&type=${event.target.value}`
+        props.search(url)
     }
 
-    searchFilter = (event) => {
-        this.setState({type: event.target.value})
-        let url = `${this.api.url}&s=${this.state.search}&type=${event.target.value}`
-        this.props.search(url)
-    }
-
-    searchSend = (event) => {
-        if (event.code === 'Enter' && this.state.search.length > 0) {
-            let url = `${this.api.url}&s=${this.state.search}&type=${this.state.type}`
-            this.props.search(url)
+    const searchSend = (event) => {
+        if (event.code === 'Enter' && search.length > 0) {
+            let url = `${web}&s=${search}&type=${type}`
+            props.search(url)
         }
     }
 
-    searchSendButton = () => {
-        if (this.state.search.length > 0) {
-            let url = `${this.api.url}&s=${this.state.search}&type=${this.state.type}`
-            this.props.search(url)
+    const searchSendButton = () => {
+        if (search.length > 0) {
+            let url = `${web}&s=${search}&type=${type}`
+            props.search(url)
         }
     }
-
-    render() {
 
         return (
             <div className="row">
@@ -50,33 +41,32 @@ class Search extends React.Component {
                         type="search"
                         className="validate"
                         placeholder='search'
-                        value = {this.state.search}
-                        onChange={this.searchInput}
-                        onKeyDown={this.searchSend}
+                        value = {search}
+                        onChange={searchInput}
+                        onKeyDown={searchSend}
                     />
                     <button
                         className='waves-effect waves-light btn-small'
-                        onClick={this.searchSendButton}>Search
+                        onClick={searchSendButton}>Search
                     </button>
 
                 </div>
                 <form action="" >
                 <label>
-                    <input  name="type" type="radio" value='' onChange={this.searchFilter} checked={this.state.type === ''}/>
+                    <input  name="type" type="radio" value='' onChange={searchFilter} checked={type === ''}/>
                     <span>All</span>
                 </label>
                 <label>
-                    <input  name="type" type="radio" value='movie' onChange={this.searchFilter} checked={this.state.type === 'movie'}/>
+                    <input  name="type" type="radio" value='movie' onChange={searchFilter} checked={type === 'movie'}/>
                     <span>Movie</span>
                 </label>
                 <label>
-                    <input name="type" type="radio" value='series' onChange={this.searchFilter} checked={this.state.type === 'series'}/>
+                    <input name="type" type="radio" value='series' onChange={searchFilter} checked={type === 'series'}/>
                     <span>Series</span>
                 </label>
                 </form>
             </div>
         )
-    }
 }
 
 

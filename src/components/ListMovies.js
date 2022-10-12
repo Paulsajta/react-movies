@@ -2,10 +2,10 @@ import React from "react";
 import OneCardMovie from "./OneCardMovie";
 
 
-class ListMovies extends React.Component {
+const ListMovies = (props) => {
 
-    render() {
-        const {movies = []} = this.props
+    {
+        const {movies = []} = props
 
         return (
             <div className='list'>

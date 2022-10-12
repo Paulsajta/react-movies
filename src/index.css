@@ -48,3 +48,11 @@ footer {
   top: 0rem;
   right: 0.7rem
 }
+
+.row {
+  width: 70%;
+  text-align: center;
+}
+label:not(:last-child) {
+  margin-right: 0.7rem;
+}
